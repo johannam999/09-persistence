@@ -13,7 +13,7 @@ afterAll(() => server.stop());
 describe('VALID request to the API', () => {
   describe('POST /api/v1/box', () => {
     it('should respond with status 201 and created a new box', () => {
-      return superagent.post(`:${testPort}/api/v1/box`)
+      return superagent.post(`:${testPort}/api/v1/box`)// this is promise
         .send(mockResource)
         .then((res) => {
           mockId = res.body.id;
@@ -34,20 +34,20 @@ describe('VALID request to the API', () => {
         });
     });
   });
-  // describe('DELETE /api/v1/box', () => {
-  //   it('should respond with status 204 delete the box data', () => {
-  //     return superagent.delete(`:${testPort}/api/v1/box?id=${mockId}`)
-  //       .then((res) => {
-  //         expect(res.body).toEqual({});
-  //       });
-  //   });
-  // }); 
+  describe('DELETE /api/v1/box', () => {
+    it('should respond with status 204 delete the box data', () => {
+      return superagent.delete(`:${testPort}/api/v1/box?id=${mockId}`)
+        .then((res) => {
+          expect(res.body).toEqual({});
+        });
+    });
+  }); 
 });
 
 describe('INVALID request', () => {
   describe('GET /api/v1/box', () => {
     it('should err out with 404 status code when id not found', () => {
-      return superagent.get(`:${testPort}/api/v1/box?id=kolory`)
+      return superagent.get(`:${testPort}/api/v1/box?id=2`)
         .query({})
         .catch((err) => {
           expect(err.status).toEqual(404);
@@ -66,12 +66,12 @@ describe('INVALID request', () => {
     });
   });
  
-  // describe('DELETE /api/v1/box', () => {
-  //   it('should respond with status 404 delete the box data', () => {
-  //     return superagent.delete(`:${testPort}/api/v1/box?id=3`)
-  //       .catch((err) => {
-  //         expect(err.status).toEqual(404);
-  //       });
-  //   });
-  // });
+  describe('DELETE /api/v1/box', () => {
+    it('should respond with status 404 delete the box data', () => {
+      return superagent.delete(`:${testPort}/api/v1/box?id=3`)
+        .catch((err) => {
+          expect(err.status).toEqual(404);
+        });
+    });
+  });
 });

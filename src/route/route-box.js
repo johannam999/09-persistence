@@ -60,7 +60,7 @@ module.exports = function routeBox(router) {
     if (req.url.query.id) {
       storage.delete('Box', req.url.query.id)
         .then((item) => {
-          response.sendJSON(res, 204, item);
+          response.sendText(res, 204, item);
           return undefined;
         })
         .catch((err) => {

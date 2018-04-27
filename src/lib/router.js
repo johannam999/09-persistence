@@ -1,5 +1,7 @@
 'use strict';
 
+// router is a constructor which has properties GET POST PUT DEL calls 
+// methods url and body parser are initiated
 const logger = require('./logger');
 const bodyParser = require('./body-parser');
 const urlParser = require('./url-parser');
@@ -12,7 +14,7 @@ const Router = module.exports = function router() {
       // '/api/v1/note': (req, res) => {},
       // '/api/v1/note/:id': (req, res) => {},
     },
-    POST: {},
+    POST: {}, // this is empty proptotype tells to fill it out with url
     PUT: {},
     DELETE: {},
   };
