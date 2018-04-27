@@ -34,14 +34,14 @@ describe('VALID request to the API', () => {
         });
     });
   });
-  describe('DELETE /api/box', () => {
-    it('should respond with status 204 delete the box data', () => {
-      return superagent.delete(`:${testPort}/api/v1/box?id=${mockId}`)
-        .then((res) => {
-          expect(res.body).toEqual({});
-        });
-    });
-  }); 
+  // describe('DELETE /api/v1/box', () => {
+  //   it('should respond with status 204 delete the box data', () => {
+  //     return superagent.delete(`:${testPort}/api/v1/box?id=${mockId}`)
+  //       .then((res) => {
+  //         expect(res.body).toEqual({});
+  //       });
+  //   });
+  // }); 
 });
 
 describe('INVALID request', () => {
@@ -66,12 +66,12 @@ describe('INVALID request', () => {
     });
   });
  
-  describe('DELETE /api/v1/box', () => {
-    it('should respond with status 404 delete the box data', () => {
-      return superagent.delete(`:${testPort}/api/v1/box?id=3`)
-        .catch((err) => {
-          expect(err.status).toEqual(404);
-        });
-    });
-  });
+  // describe('DELETE /api/v1/box', () => {
+  //   it('should respond with status 404 delete the box data', () => {
+  //     return superagent.delete(`:${testPort}/api/v1/box?id=3`)
+  //       .catch((err) => {
+  //         expect(err.status).toEqual(404);
+  //       });
+  //   });
+  // });
 });

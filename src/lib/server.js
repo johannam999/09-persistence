@@ -2,11 +2,15 @@
 
 const http = require('http');
 
+// Router setup (do this first)
 const Router = require('./router');
 
 const router = new Router();
 require('../route/route-box')(router);
+// route-box searches fo a router and registers our routes
+console.log(router, 'ROUTER IN SERVER');
 // const logger = require('./logger');
+
 
 const app = http.createServer(router.route());
 
@@ -14,3 +18,4 @@ const app = http.createServer(router.route());
 const server = module.exports = {};
 server.start = (port, callback) => app.listen(port, callback);
 server.stop = callback => app.close(callback);
+
